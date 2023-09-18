@@ -187,7 +187,13 @@
   </head>
 
   <body>
-    <div id="tetris">
+    <div id="level-options">
+      <h1>Selecione o nível de dificuldade:</h1>
+      <button id="easyButton">Fácil</button>
+      <button id="mediumButton">Médio</button>
+      <button id="hardButton">Difícil</button>
+    </div>
+    <div id="tetris" style="display: none">
       <div id="menu">
         <p id="start"><a href="javascript:play();">Press Space to Play.</a></p>
         <p><canvas id="upcoming"></canvas></p>
@@ -559,6 +565,7 @@
         setNextPiece();
       }
 
+      // Ajuste a lógica do jogo de acordo com o nível atual durante a atualização do jogo
       function update(idt) {
         if (playing) {
           if (vscore < score) setVisualScore(vscore + 1);
@@ -763,10 +770,69 @@
       }
 
       //-------------------------------------------------------------------------
-      // FINALLY, lets run the game
+      // Add dificulty on game
       //-------------------------------------------------------------------------
 
-      run();
+      var currentLevel = null;
+      var gameStarted = false;
+
+      var difficultyLevels = {
+        easy: {
+          speed: 0.6,
+          scoreThreshold: 1000, // Pontuação necessária para avançar de nível
+        },
+        medium: {
+          speed: 0.5,
+          scoreThreshold: 2000,
+        },
+        hard: {
+          speed: 0.4,
+          scoreThreshold: 3000,
+        },
+      };
+
+      var currentLevel = "easy"; // Nível padrão
+
+      // Função para alterar o nível de dificuldade
+      function setDifficulty(level) {
+        currentLevel = level;
+        document.getElementById("level-options").style.display = "none";
+        document.getElementById("tetris").style.display = "block";
+        speed.start = difficultyLevels[level].speed;
+        startGame();
+      }
+
+      function startGame() {
+        if (currentLevel !== null && !gameStarted) {
+          // Configurar o jogo com o nível de dificuldade selecionado
+          // Iniciar o jogo aqui
+          run();
+          gameStarted = true; // Defina para evitar reiniciar o jogo acidentalmente
+        }
+      }
+
+      // Exemplo de como o jogador pode selecionar um nível de dificuldade
+      document
+        .getElementById("easyButton")
+        .addEventListener("click", function () {
+          setDifficulty("easy");
+        });
+
+      document
+        .getElementById("mediumButton")
+        .addEventListener("click", function () {
+          setDifficulty("medium");
+        });
+
+      document
+        .getElementById("hardButton")
+        .addEventListener("click", function () {
+          setDifficulty("hard");
+        });
+
+      //-------------------------------------------------------------------------
+      // FINALLY, lets run the game
+      //-------------------------------------------------------------------------
     </script>
   </body>
 </html>
