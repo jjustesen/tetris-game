@@ -183,6 +183,23 @@
           height: 800px;
         }
       } /* 40px chunks */
+
+      .touch-controls {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .touch-button {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        background-color: #007bff;
+        color: white;
+        font-size: 24px;
+        margin: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
     </style>
   </head>
 
@@ -204,6 +221,12 @@
         Sorry, this example cannot be run because your browser does not support
         the &lt;canvas&gt; element
       </canvas>
+    </div>
+    <div class="touch-controls">
+      <div class="touch-button" id="leftButton">←</div>
+      <div class="touch-button" id="rightButton">→</div>
+      <div class="touch-button" id="rotateButton">↻</div>
+      <div class="touch-button" id="dropButton">↓</div>
     </div>
 
     <script src="stats.js"></script>
@@ -829,6 +852,41 @@
         .addEventListener("click", function () {
           setDifficulty("hard");
         });
+
+      //-------------------------------------------------------------------------
+      // Add physical controls for mobile
+      //-------------------------------------------------------------------------
+
+      document
+        .getElementById("leftButton")
+        .addEventListener("click", function () {
+          handleTouchControl(KEY.LEFT);
+        });
+
+      document
+        .getElementById("rightButton")
+        .addEventListener("click", function () {
+          handleTouchControl(KEY.RIGHT);
+        });
+
+      document
+        .getElementById("rotateButton")
+        .addEventListener("click", function () {
+          handleTouchControl(KEY.UP);
+        });
+
+      document
+        .getElementById("dropButton")
+        .addEventListener("click", function () {
+          handleTouchControl(KEY.DOWN);
+        });
+
+      function handleTouchControl(action) {
+        const event = new KeyboardEvent("keydown", {
+          keyCode: action,
+        });
+        keydown(event);
+      }
 
       //-------------------------------------------------------------------------
       // FINALLY, lets run the game
