@@ -19,7 +19,11 @@
     </div>
     <div id="tetris" style="display: none">
       <div id="menu">
-        <p id="start"><a href="javascript:play();">Press Space to Play.</a></p>
+        <p id="start">
+          <a href="javascript:play();"
+            >Aperte espaço ou clique aqui para iniciar.</a
+          >
+        </p>
         <p><canvas id="upcoming"></canvas></p>
         <p>score <span id="score">00000</span></p>
         <p>rows <span id="rows">0</span></p>
@@ -29,6 +33,8 @@
         the &lt;canvas&gt; element
       </canvas>
     </div>
+
+    <!-- touch -->
     <div class="touch_container">
       <div class="top_buttons">
         <div class="touch_button" id="rotateButton">↻</div>
@@ -39,6 +45,7 @@
         <div class="touch_button" id="rightButton">></div>
       </div>
     </div>
+    <!-- touch -->
 
     <script src="js/stats.js"></script>
     <script src="js/run.js"></script>

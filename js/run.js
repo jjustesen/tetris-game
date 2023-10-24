@@ -626,6 +626,10 @@ document.getElementById("dropButton").addEventListener("click", function () {
   handleTouchControl(KEY.DOWN);
 });
 
+document.getElementById("start").addEventListener("click", function () {
+  handleTouchControl(KEY.SPACE);
+});
+
 function handleTouchControl(action) {
   const event = new KeyboardEvent("keydown", {
     keyCode: action,
