@@ -6,32 +6,44 @@
     <link rel="stylesheet" href="css/menu.css" type="text/css" />
     <link rel="stylesheet" href="css/touchButtons.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
     <div id="menu_container" class="menu_container">
       <h1>Selecione o nível de dificuldade:</h1>
       <div id="level_options" class="level_options">
-        <button id="easyButton" class="dificult_buttons">Fácil</button>
-        <button id="mediumButton" class="dificult_buttons">Médio</button>
-        <button id="hardButton" class="dificult_buttons">Difícil</button>
+        <button id="easyButton" class="dificult_buttons">FÁCIL</button>
+        <button id="mediumButton" class="dificult_buttons">MÉDIO</button>
+        <button id="hardButton" class="dificult_buttons">DIFÍCIL</button>
       </div>
     </div>
     <div id="tetris" style="display: none">
+      <canvas id="canvas">
+        Sorry, this example cannot be run because your browser does not support
+        the &lt;canvas&gt; element
+      </canvas>
       <div id="menu">
+        <div id="score_container">
+          <p>SCORE</p>
+          <span id="score">00000</span>
+        </div>
+        <div id="rows_container">
+          <p>LINES</p>
+          <span id="rows">0</span>
+        </div>
+        <p><canvas id="upcoming"></canvas></p>
         <p id="start">
           <a href="javascript:play();"
             >Aperte espaço ou clique aqui para iniciar.</a
           >
         </p>
-        <p><canvas id="upcoming"></canvas></p>
-        <p>score <span id="score">00000</span></p>
-        <p>rows <span id="rows">0</span></p>
       </div>
-      <canvas id="canvas">
-        Sorry, this example cannot be run because your browser does not support
-        the &lt;canvas&gt; element
-      </canvas>
     </div>
 
     <!-- touch -->

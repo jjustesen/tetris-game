@@ -547,6 +547,8 @@ function drawPiece(ctx, type, x, y, dir) {
 
 function drawBlock(ctx, x, y, color) {
   ctx.fillStyle = color;
+  ctx.strokeStyle = "black";
+
   ctx.fillRect(x * dx, y * dy, dx, dy);
   ctx.strokeRect(x * dx, y * dy, dx, dy);
 }
@@ -578,8 +580,9 @@ var currentLevel = "easy"; // Nível padrão
 // Função para alterar o nível de dificuldade
 function setDifficulty(level) {
   currentLevel = level;
-  document.getElementById("level_options").style.display = "none";
-  document.getElementById("tetris").style.display = "block";
+  document.getElementById("menu_container").style.display = "none";
+  document.getElementById("tetris").style.display = "flex";
+  document.getElementById("tetris").style.justifyContent = "space-between";
   speed.start = difficultyLevels[level].speed;
   startGame();
 }
