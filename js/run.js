@@ -248,33 +248,24 @@ function resize(event) {
   invalidateNext();
 }
 
+const keyActions = {
+  [KEY.LEFT]: () => actions.push(DIR.LEFT),
+  [KEY.RIGHT]: () => actions.push(DIR.RIGHT),
+  [KEY.UP]: () => actions.push(DIR.UP),
+  [KEY.DOWN]: () => actions.push(DIR.DOWN),
+  [KEY.ESC]: () => lose(),
+  [KEY.SPACE]: () => play(),
+};
+
 function keydown(ev) {
   var handled = false;
   if (playing) {
-    switch (ev.keyCode) {
-      case KEY.LEFT:
-        actions.push(DIR.LEFT);
-        handled = true;
-        break;
-      case KEY.RIGHT:
-        actions.push(DIR.RIGHT);
-        handled = true;
-        break;
-      case KEY.UP:
-        actions.push(DIR.UP);
-        handled = true;
-        break;
-      case KEY.DOWN:
-        actions.push(DIR.DOWN);
-        handled = true;
-        break;
-      case KEY.ESC:
-        lose();
-        handled = true;
-        break;
+    if (keyActions.hasOwnProperty(ev.keyCode)) {
+      keyActions[ev.keyCode]();
+      handled = true;
     }
   } else if (ev.keyCode == KEY.SPACE) {
-    play();
+    keyActions[KEY.SPACE]();
     handled = true;
   }
   if (handled) ev.preventDefault(); // prevent arrow keys from scrolling the page (supported in IE9+ and all other browsers)
