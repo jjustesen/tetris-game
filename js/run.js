@@ -613,32 +613,60 @@ document.getElementById("hardButton").addEventListener("click", function () {
 // Add physical controls for mobile
 //-------------------------------------------------------------------------
 
-document.getElementById("leftButton").addEventListener("click", function () {
-  handleTouchControl(KEY.LEFT);
-});
-
-document.getElementById("rightButton").addEventListener("click", function () {
-  handleTouchControl(KEY.RIGHT);
-});
-
-document.getElementById("rotateButton").addEventListener("click", function () {
-  handleTouchControl(KEY.UP);
-});
-
-document.getElementById("dropButton").addEventListener("click", function () {
-  handleTouchControl(KEY.DOWN);
-});
-
-document.getElementById("start").addEventListener("click", function () {
-  handleTouchControl(KEY.SPACE);
-});
-
-function handleTouchControl(action) {
+function handleLeftButtonClick() {
   const event = new KeyboardEvent("keydown", {
-    keyCode: action,
+    keyCode: KEY.LEFT,
   });
   keydown(event);
 }
+
+function handleRightButtonClick() {
+  const event = new KeyboardEvent("keydown", {
+    keyCode: KEY.RIGHT,
+  });
+  keydown(event);
+}
+
+function handleRotateButtonClick() {
+  const event = new KeyboardEvent("keydown", {
+    keyCode: KEY.UP,
+  });
+  keydown(event);
+}
+
+function handleDropButtonClick() {
+  const event = new KeyboardEvent("keydown", {
+    keyCode: KEY.DOWN,
+  });
+  keydown(event);
+}
+
+function handleStartButtonClick() {
+  const event = new KeyboardEvent("keydown", {
+    keyCode: KEY.SPACE,
+  });
+  keydown(event);
+}
+
+document
+  .getElementById("leftButton")
+  .addEventListener("click", handleLeftButtonClick);
+
+document
+  .getElementById("rightButton")
+  .addEventListener("click", handleRightButtonClick);
+
+document
+  .getElementById("rotateButton")
+  .addEventListener("click", handleRotateButtonClick);
+
+document
+  .getElementById("dropButton")
+  .addEventListener("click", handleDropButtonClick);
+
+document
+  .getElementById("start")
+  .addEventListener("click", handleStartButtonClick);
 
 //-------------------------------------------------------------------------
 // FINALLY, lets run the game
