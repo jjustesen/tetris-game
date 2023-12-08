@@ -16,6 +16,27 @@
 
   <body>
     <div id="menu_container" class="menu_container">
+      <h1>MENU</h1>
+      <div id="menu_buttons" class="level_options">
+        <button id="startButton" class="menu_button">START</button>
+        <button id="themeButton" class="menu_button">TEMA</button>
+        <button id="dificultButton" class="menu_button">DIFICULDADE</button>
+      </div>
+    </div>
+
+    <div id="menu_container_theme" class="menu_container" style="display: none">
+      <h1>TEMAS</h1>
+      <div id="theme_buttons" class="level_options">
+        <button id="ligthButton" class="theme_button">CLARO</button>
+        <button id="darkButton" class="theme_button">ESCURO</button>
+      </div>
+    </div>
+
+    <div
+      id="menu_container_dificult"
+      class="menu_container"
+      style="display: none"
+    >
       <h1>Selecione o nível de dificuldade:</h1>
       <div id="level_options" class="level_options">
         <button id="easyButton" class="dificult_buttons">FÁCIL</button>
@@ -23,11 +44,13 @@
         <button id="hardButton" class="dificult_buttons">DIFÍCIL</button>
       </div>
     </div>
+
     <div id="tetris" style="display: none">
       <canvas id="canvas">
         Sorry, this example cannot be run because your browser does not support
         the &lt;canvas&gt; element
       </canvas>
+
       <div id="menu">
         <div id="score_container">
           <p>SCORE</p>
@@ -47,7 +70,7 @@
     </div>
 
     <!-- touch -->
-    <div class="touch_container">
+    <div id="touch_container" class="touch_container" style="display: none">
       <div class="top_buttons">
         <div class="touch_button" id="rotateButton">↻</div>
       </div>

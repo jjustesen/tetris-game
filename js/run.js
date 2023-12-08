@@ -580,11 +580,8 @@ var currentLevel = "easy"; // Nível padrão
 // Função para alterar o nível de dificuldade
 function setDifficulty(level) {
   currentLevel = level;
-  document.getElementById("menu_container").style.display = "none";
-  document.getElementById("tetris").style.display = "flex";
-  document.getElementById("tetris").style.justifyContent = "space-between";
   speed.start = difficultyLevels[level].speed;
-  startGame();
+  showMenu();
 }
 
 function startGame() {
@@ -594,6 +591,11 @@ function startGame() {
     run();
     gameStarted = true; // Defina para evitar reiniciar o jogo acidentalmente
   }
+}
+
+function showMenu() {
+  document.getElementById("menu_container_dificult").style.display = "none";
+  document.getElementById("menu_container").style.display = "flex";
 }
 
 // Exemplo de como o jogador pode selecionar um nível de dificuldade
@@ -607,6 +609,78 @@ document.getElementById("mediumButton").addEventListener("click", function () {
 
 document.getElementById("hardButton").addEventListener("click", function () {
   setDifficulty("hard");
+});
+
+document
+  .getElementById("dificultButton")
+  .addEventListener("click", function () {
+    document.getElementById("menu_container").style.display = "none";
+    document.getElementById("menu_container_dificult").style.display = "flex";
+  });
+
+document.getElementById("startButton").addEventListener("click", function () {
+  document.getElementById("menu_container").style.display = "none";
+  document.getElementById("touch_container").style.display = "flex";
+
+  document.getElementById("tetris").style.display = "flex";
+  document.getElementById("tetris").style.justifyContent = "space-between";
+  startGame();
+});
+
+document.getElementById("themeButton").addEventListener("click", function () {
+  document.getElementById("menu_container").style.display = "none";
+  document.getElementById("menu_container_theme").style.display = "flex";
+});
+
+//-------------------------------------------------------------------------
+// Add physical controls for mobile
+//-------------------------------------------------------------------------
+
+function handleLeftButtonClick() {
+  const event = new KeyboardEvent("keydown", {
+    keyCode: KEY.LEFT,
+  });
+  keydown(event);
+}
+
+function handleRightButtonClick() {
+  const event = new KeyboardEvent("keydown", {
+    keyCode: KEY.RIGHT,
+  });
+  keydown(event);
+}
+
+function handleRotateButtonClick() {
+  const event = new KeyboardEvent("keydown", {
+    keyCode: KEY.UP,
+  });
+  keydown(event);
+}
+
+//-------------------------------------------------------------------------
+// Change theme to light
+//-------------------------------------------------------------------------
+
+document.getElementById("ligthButton").addEventListener("click", function () {
+  document.body.style.backgroundColor = "#fff";
+  document.body.style.color = "#000";
+  document.getElementById("tetris").style.backgroundColor = "#ffffffe1";
+  document.getElementById("score_container").style.backgroundColor = "#e6e6e6";
+  document.getElementById("rows_container").style.backgroundColor = "#e6e6e6";
+  document.getElementById("upcoming").style.backgroundColor = "#e6e6e6";
+  document.getElementById("menu_container_theme").style.display = "none";
+  document.getElementById("menu_container").style.display = "flex";
+});
+
+document.getElementById("darkButton").addEventListener("click", function () {
+  document.body.style.backgroundColor = "#000";
+  document.body.style.color = "white";
+  document.getElementById("tetris").style.backgroundColor = "#0e0e0ee1";
+  document.getElementById("score_container").style.backgroundColor = "#212121";
+  document.getElementById("rows_container").style.backgroundColor = "#212121";
+  document.getElementById("upcoming").style.backgroundColor = "#212121";
+  document.getElementById("menu_container_theme").style.display = "none";
+  document.getElementById("menu_container").style.display = "flex";
 });
 
 //-------------------------------------------------------------------------
